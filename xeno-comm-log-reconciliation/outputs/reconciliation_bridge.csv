@@ -1,0 +1,7 @@
+step,description,result,reason
+0,Naive count of all communication_log rows,30,Starting point: every row is a send attempt.
+1,Exclude campaign 9004,26,Campaign 9004 is approval_awaiting so its 4 send-log rows are not eligible for reporting.
+2,Collapse retry family 9001 -> 9002 -> 9003,23,13 send attempts represent 10 distinct customers in the same retry chain; reduction of 3.
+3,Collapse retry family 9201 -> 9202,22,6 send attempts represent 5 distinct customers in the same retry chain; reduction of 1.
+4,Verify standalone campaign 9101,22,All 7 send events remain qualifying; C20 appears twice but the events are legitimate standalone sends.
+final,Finance target_base,22,Reconciled to the reported number.
